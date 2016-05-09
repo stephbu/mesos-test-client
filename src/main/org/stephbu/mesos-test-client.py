@@ -14,6 +14,8 @@ def main(argv=None):
 
     signal.signal(signal.SIGTERM, sighandler) # so we can handle kill gracefully
     signal.signal(signal.SIGINT, sighandler) # so we can handle ctrl-c
+    signal.signal(signal.SIGUSR1, sighandler) # so we can handle ctrl-c
+    signal.signal(signal.SIGUSR2, sighandler) # so we can handle ctrl-c
     try:
         Thread(target=main_loop, args=()).start()
     except Exception, reason:
