@@ -12,7 +12,6 @@ def main(argv=None):
     for variable in os.environ.iterkeys():
         print variable, "=", os.environ[variable]
 
-    signal.signal(signal.SIGKILL, sighandler) # so we can handle kill gracefully
     signal.signal(signal.SIGTERM, sighandler) # so we can handle kill gracefully
     signal.signal(signal.SIGINT, sighandler) # so we can handle ctrl-c
     try:
@@ -33,7 +32,7 @@ def main_loop():
         print '[%s]' % time.strftime("%c"), 'running'
         time.sleep(5)
 
-    print "done (killed)"
+    print '[%s]' % time.strftime("%c"), 'loop exited gracefully'
 
 
 if __name__ == '__main__':
